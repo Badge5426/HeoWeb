@@ -16,13 +16,22 @@
   <meta name="theme-color" content="#1C1C1F">
   <link rel="stylesheet" href="https://cdn3.codesign.qq.com/icons/X2bzpZvRWkZkAaV/latest/iconfont.css">
   <script src="/jquery-3.7.1.min.js"></script>
+  <style>
+    /* 修复导航遮挡：给每个跳转目标加 padding 顶上去，再用负 margin 拉回来 */
+    #方案, #产品, #服务, #案例, #关于 {
+      padding-top: 80px; /* 留出导航栏高度 */
+      margin-top: -80px; /* 抵消占位，不影响页面布局 */
+      display: block; /* 确保生效 */
+      position: relative;
+    }
+  </style>
 </head>
 
 <body id="body">
   <div class="nav">
     <div class="nav-content">
       <div class="nav-left">
-        <a href="javascript:scrollToTopWithAnimation()" class="site-logo">
+        <a href="#" class="site-logo">
           <img src="/img/icon.webp" alt="logo" class="site-logo-img">
           <span class="site-name">夏飞</span>
         </a>
