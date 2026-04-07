@@ -76,22 +76,21 @@
     <span class="group-description">这里可填写影音设备、背景音乐系统、场景模式、控制方式等内容</span>
   </div>
 
-  <!-- 悬浮音乐播放器 -->
+  <!-- 无版权纯音乐 · 第一首 · 自动循环播放 -->
   <audio id="bgAudio" loop>
-    <source src="/music/bgm.mp3" type="audio/mpeg">
+    <source src="https://assets.mixkit.co/sfx/preview/mixkit-software-interface-start-2574.mp3" type="audio/mpeg">
   
+
   <div class="float-music" id="musicBtn">🎵</div>
 
   <script>
     const audio = document.getElementById('bgAudio');
     const btn = document.getElementById('musicBtn');
 
-    // 页面一交互就自动播放
     document.addEventListener('click', () => {
       audio.play().catch(err => {});
     }, { once: true });
 
-    // 点击按钮暂停/播放
     btn.onclick = () => {
       if (audio.paused) {
         audio.play();
