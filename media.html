@@ -2,41 +2,41 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>智能影音娱乐方案 - 夏飞智能家居</title>
   <link rel="stylesheet" href="/main.css">
   <link rel="icon" type="image/x-icon" href="/img/icon.webp">
   <link rel="apple-touch-icon" href="/img/icon.webp">
   <meta name="theme-color" content="#1C1C1F">
   <style>
-    #方案,#产品,#服务,#案例,#关于 {
+    #方案,#产品,#服务,#案例,#about {
       padding-top:80px;
       margin-top:-80px;
       display:block;
       position:relative;
     }
 
-    /* 🔧 手机端悬浮按钮：避开底部导航栏，永远可见 */
+    /* 悬浮音乐：抬高位置，避开手机底部栏 + 最高层级 */
     .float-music {
       position: fixed !important;
-      bottom: 80px !important; /* 抬高80px，避开手机底部导航栏 */
+      bottom: 80px !important;
       right: 20px !important;
-      width: 56px !important;
-      height: 56px !important;
+      width: 60px !important;
+      height: 60px !important;
       background: #165DFF !important;
       border-radius: 50% !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
       color: #fff !important;
-      font-size: 22px !important;
+      font-size: 24px !important;
       cursor: pointer !important;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2) !important;
       z-index: 999999 !important;
       transition: transform 0.2s !important;
     }
     .float-music:hover {
-      transform: scale(1.08) !important;
+      transform: scale(1.1) !important;
     }
   </style>
 </head>
@@ -54,7 +54,7 @@
         <a href="/index.html#产品" class="nav-item">产品</a>
         <a href="/index.html#服务" class="nav-item">服务</a>
         <a href="/index.html#案例" class="nav-item">案例</a>
-        <a href="/index.html#关于" class="nav-item">关于</a>
+        <a href="/index.html#about" class="nav-item">关于</a>
       </div>
     </div>
   </div>
@@ -78,25 +78,21 @@
     <span class="group-description">这里可填写影音设备、背景音乐系统、场景模式、控制方式等内容</span>
   </div>
 
-  <!-- 音频标签：补全闭合标签 -->
+  <!-- 无版权科技BGM -->
   <audio id="bgAudio" loop>
     <source src="https://assets.mixkit.co/sfx/preview/mixkit-software-interface-start-2574.mp3" type="audio/mpeg">
-    您的浏览器不支持音频播放
-  
 
-  <!-- 悬浮播放按钮 -->
+  <!-- 悬浮按钮：放在body末尾，不被任何元素遮挡 -->
   <div class="float-music" id="musicBtn">🎵</div>
 
   <script>
     const audio = document.getElementById('bgAudio');
     const btn = document.getElementById('musicBtn');
 
-    // 页面点击后自动播放
     document.body.addEventListener('click', function(){
-      audio.play().catch(e => console.log("播放失败：", e));
+      audio.play().catch(e=>console.log(e));
     }, {once:true});
 
-    // 点击按钮切换播放/暂停
     btn.onclick = function(){
       if(audio.paused){
         audio.play();
@@ -108,6 +104,7 @@
     };
   </script>
 
+  <!-- 底部版权完整保留 -->
   <div class="footer">
     <div class="footer-content need-padding">
       <span class="info">Copyright © 夏飞的智能家居 保留所有权利。</span>
