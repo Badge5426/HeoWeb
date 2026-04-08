@@ -10,33 +10,29 @@
   <meta name="theme-color" content="#1C1C1F">
 
   <!-- APlayer 依赖 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
 
   <style>
     #方案,#产品,#服务,#案例,#关于 { padding-top:80px; margin-top:-80px; display:block; position:relative; }
     
-    /* 音乐播放器样式 */
-    .music-player {
-      max-width: 600px;
-      margin: 40px auto 0;
-      padding: 20px;
-      border-radius: 16px;
-      text-align: center;
+    /* 🔥 强制APlayer固定在右下角，绝对不跑偏 */
+    .aplayer-fixed {
+      position: fixed !important;
+      right: 20px !important;
+      bottom: 20px !important;
+      left: auto !important;
+      top: auto !important;
+      z-index: 999999999 !important;
+      max-width: 320px !important;
+      border-radius: 12px !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+      transform: none !important;
     }
-    .music-player h3 {
-      margin-bottom: 16px;
-      font-size: 20px;
-      color: #333;
-    }
-    audio {
-      width: 100%;
-      border-radius: 12px;
-      outline: none;
-    }
-    .aplayer {
-      z-index: 999999 !important;
-    }
+    /* 极简样式：隐藏多余元素 */
+    .aplayer-list { display: none !important; }
+    .aplayer-time { display: none !important; }
+    .aplayer-info { padding: 6px 10px !important; }
   </style>
 </head>
 <body>
@@ -75,15 +71,6 @@
   <div class="product-group need-padding">
     <h2 class="group-title">方案详情</h2>
     <span class="group-description">这里可填写影音设备、背景音乐系统、场景模式、控制方式等内容</span>
-
-    <!-- 音乐播放器 -->
-    <div class="music-player">
-      <h3>🎵 背景音乐试听</h3>
-      <audio controls>
-        <source src="/music/bgm.mp3" type="audio/mpeg">
-        您的浏览器不支持音频播放
-      
-    </div>
   </div>
 
   <div class="footer">
@@ -96,22 +83,25 @@
     </div>
   </div>
 
-<!-- 悬浮播放器 唯一新增的部分，不会影响任何原有内容 -->
-<div id="myplayer"></div>
-<script>
-const ap = new APlayer({
-  container: document.getElementById('myplayer'),
-  fixed: true,
-  autoplay: false,
-  loop: true,
-  volume: 0.5,
-  audio: [{
-    name: "背景音乐",
-    artist: "夏飞智能家居",
-    url: "https://cdn.pondly.cc/audio/relax.mp3",
-  }]
-});
-</script>
+  <!-- 右下角悬浮APlayer -->
+  <div id="myplayer"></div>
+  <script>
+    const ap = new APlayer({
+      container: document.getElementById('myplayer'),
+      fixed: true,
+      autoplay: false,
+      loop: true,
+      volume: 0.7,
+      lrcType: 0,
+      audio: [{
+        name: "背景音乐",
+        artist: "夏飞智能家居",
+        // ✅ 稳定无版权免费音源（jsDelivr CDN 永久有效，无跨域）
+        url: "https://cdn.jsdelivr.net/gh/metowolf/MetingJS@master/demo/music.mp3",
+        cover: "https://picsum.photos/60/60?random=1"
+      }]
+    });
+  </script>
 
 </body>
 </html>
