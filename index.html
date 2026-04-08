@@ -16,13 +16,30 @@
   <meta name="theme-color" content="#1C1C1F">
   <link rel="stylesheet" href="https://cdn3.codesign.qq.com/icons/X2bzpZvRWkZkAaV/latest/iconfont.css">
   <script src="/jquery-3.7.1.min.js"></script>
+
   <style>
-    /* 修复导航遮挡 */
+    /* 修复导航锚点 */
     #方案, #产品, #服务, #案例, #关于 {
       padding-top: 80px;
       margin-top: -80px;
       display: block;
       position: relative;
+    }
+
+    /* ✅ 核心修复：按钮点击区域完整生效 */
+    .group-info-button {
+      position: relative;
+      z-index: 10;
+      display: block;
+      margin-top: 8px;
+    }
+    .linkbutton {
+      display: inline-block !important;
+      padding: 10px 24px !important;
+      height: auto !important;
+      pointer-events: all !important;
+      position: relative !important;
+      z-index: 999 !important;
     }
   </style>
 </head>
@@ -48,6 +65,7 @@
       </div>
     </div>
   </div>
+
   <div class="menu-list" id="menu-list">
     <a href="#方案" class="nav-item">方案</a>
     <a href="#产品" class="nav-item">产品</a>
@@ -81,7 +99,6 @@
     <span class="avatar-title">智能设计师、全屋智能方案定制师</span>
   </div>
 
-  <!-- 智能方案 -->
   <div class="product-banner" style="background:#1F2937;">
     <div class="banner-info need-padding">
       <span class="tips">全屋智能</span>
@@ -227,7 +244,6 @@
     <h2 class="group-title">服务流程</h2>
     <span class="group-description">专业、透明、省心的一站式服务</span>
     <div class="group-items">
-
       <div class="group-item">
         <a class="group-item-icon">
           <img class="group-item-icon-img" src="/img/tianliGPT.webp" alt="product-icon">
@@ -239,7 +255,6 @@
           </div>
         </div>
       </div>
-
       <div class="group-item">
         <a class="group-item-icon">
           <img class="group-item-icon-img" src="/img/反馈论坛.webp" alt="product-icon">
@@ -251,7 +266,6 @@
           </div>
         </div>
       </div>
-
       <div class="group-item">
         <a class="group-item-icon">
           <img class="group-item-icon-img" src="/img/应用图标库.webp" alt="product-icon">
@@ -263,7 +277,6 @@
           </div>
         </div>
       </div>
-
       <div class="group-item">
         <a class="group-item-icon">
           <img class="group-item-icon-img" src="/img/Butterfly.webp" alt="product-icon">
@@ -275,7 +288,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -284,7 +296,6 @@
     <h2 class="group-title">经典案例</h2>
     <span class="group-description">已帮助数百户家庭实现智慧生活</span>
     <div class="group-items">
-
       <div class="group-item">
         <a class="group-item-icon">
           <img class="group-item-icon-img" src="/img/HeoMusic.webp" alt="product-icon">
@@ -296,7 +307,6 @@
           </div>
         </div>
       </div>
-
       <div class="group-item">
         <a class="group-item-icon">
           <img class="group-item-icon-img" src="/img/TimePlus.webp" alt="product-icon">
@@ -308,7 +318,6 @@
           </div>
         </div>
       </div>
-
       <div class="group-item">
         <a class="group-item-icon">
           <img class="group-item-icon-img" src="/img/anzhiyu.webp" alt="product-icon">
@@ -320,7 +329,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -329,7 +337,6 @@
     <h2 class="group-title">关于夏飞</h2>
     <span class="group-description">专注智能家居，用心做好每一个家</span>
     <div class="group-items">
-
       <div class="group-item">
         <a class="group-item-icon">
           <img class="group-item-icon-img" src="/img/icon.webp" alt="product-icon">
@@ -344,18 +351,20 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
   <div class="footer">
     <div class="footer-content need-padding">
       <span class="info">Copyright © 夏飞的智能家居 保留所有权利。</span>
-      <div class="info-group"><a class="info" href="#服务">联系我们</a><a class="info" >专业全屋智能定制</a></div>
+      <div class="info-group">
+        <a class="info" href="#服务">联系我们</a>
+        <a class="info">专业全屋智能定制</a>
+      </div>
     </div>
   </div>
 
-<script src="/js/simpleParallax.min.js"></script>
-<script src="/js/main.js"></script>
-
+  <script src="/js/simpleParallax.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
 </html>
