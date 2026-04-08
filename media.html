@@ -3,247 +3,115 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>智能影音娱乐方案 - 夏飞的智能家居</title>
-  <!-- 🔴 彻底不依赖 main.css，所有样式100%写死在页面内，不受任何外部影响 -->
+  <title>智能影音娱乐方案 - 夏飞智能家居</title>
+  <link rel="stylesheet" href="/main.css">
+  <link rel="icon" href="/img/logo.webp">
+  <link rel="apple-touch-icon" href="/img/logo.webp">
+  <meta name="theme-color" content="#1C1C1F">
+
+  <!-- APlayer 依赖 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-    body {
-      background-color: #f5f5f7;
-      color: #1d1d1f;
-      line-height: 1.5;
-    }
-    /* 导航栏样式（完全独立） */
-    .nav {
-      background-color: #1d1d1f;
-      padding: 16px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .nav-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .site-logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #fff;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: 500;
-    }
-    .site-logo img {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-    }
-    .nav-center {
-      display: flex;
-      gap: 24px;
-    }
-    .nav-center a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 14px;
-      opacity: 0.8;
-      transition: opacity 0.2s;
-    }
-    .nav-center a:hover {
-      opacity: 1;
-    }
-    /* 主体内容样式（完全独立） */
-    .first-stack {
-      max-width: 1200px;
-      margin: 60px auto;
-      padding: 0 20px;
-    }
-    .title-group h1 {
-      font-size: 48px;
-      font-weight: 700;
-      margin-bottom: 16px;
-      color: #1d1d1f;
-    }
-    .discription {
-      font-size: 20px;
-      color: #424245;
-      margin-bottom: 32px;
-    }
-    .about-button {
-      display: inline-block;
-      padding: 12px 24px;
-      background-color: #1d1d1f;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 20px;
-      font-size: 16px;
-      font-weight: 500;
-      transition: background-color 0.2s;
-    }
-    .about-button:hover {
-      background-color: #424245;
-    }
-    .product-group {
-      max-width: 1200px;
-      margin: 60px auto;
-      padding: 0 20px;
-    }
-    .group-title {
-      font-size: 28px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: #1d1d1f;
-    }
-    .group-description {
-      font-size: 16px;
-      color: #86868b;
-      margin-bottom: 40px;
-    }
-    /* 🔴 核心：音乐按钮样式 100% 强制生效，不受任何外部CSS影响 */
-    .music-btn {
-      /* 强制显示，绝对不被隐藏 */
-      display: inline-flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      /* 尺寸 */
-      width: 56px !important;
-      height: 56px !important;
-      /* 样式 */
-      background: #165DFF !important;
-      border-radius: 50% !important;
-      color: #ffffff !important;
-      font-size: 22px !important;
-      cursor: pointer !important;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
-      /* 位置：标题上方，间距24px */
-      margin-bottom: 24px !important;
-      /* 层级拉满，绝对不被遮挡 */
-      z-index: 999999 !important;
-      transition: transform 0.2s ease !important;
-      /* 强制可点击 */
-      pointer-events: auto !important;
-    }
-    .music-btn:hover {
-      transform: scale(1.08) !important;
-    }
-    /* 隐藏原生audio，不占空间 */
-    audio {
-      display: none !important;
-    }
-    /* 底部版权样式（完全独立） */
-    .footer {
-      background-color: #e8e8ed;
-      padding: 40px 20px;
-      margin-top: 80px;
-    }
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
+    #方案,#产品,#服务,#案例,#关于 { padding-top:80px; margin-top:-80px; display:block; position:relative; }
+    
+    /* 音乐播放器样式 */
+    .music-player {
+      max-width: 600px;
+      margin: 40px auto 0;
+      padding: 20px;
+      border-radius: 16px;
       text-align: center;
-      color: #86868b;
-      font-size: 14px;
     }
-    .info-group {
-      margin-top: 16px;
-      display: flex;
-      justify-content: center;
-      gap: 24px;
+    .music-player h3 {
+      margin-bottom: 16px;
+      font-size: 20px;
+      color: #333;
     }
-    .info-group a {
-      color: #86868b;
-      text-decoration: none;
-      transition: color 0.2s;
+    audio {
+      width: 100%;
+      border-radius: 12px;
+      outline: none;
     }
-    .info-group a:hover {
-      color: #1d1d1f;
+    .aplayer {
+      z-index: 999999 !important;
     }
   </style>
-  <link rel="icon" type="image/x-icon" href="/img/icon.webp">
-  <link rel="apple-touch-icon" href="/img/icon.webp">
-  <meta name="theme-color" content="#1C1C1F">
 </head>
 <body>
-  <!-- 导航栏 -->
   <div class="nav">
     <div class="nav-content">
-      <a href="/index.html" class="site-logo">
-        <img src="/img/icon.webp" alt="logo">
-        <span>夏飞</span>
-      </a>
+      <div class="nav-left">
+        <a href="/index.html" class="site-logo">
+          <img src="/img/logo.webp" alt="logo" class="site-logo-img">
+          <span class="site-name">夏飞</span>
+        </a>
+      </div>
       <div class="nav-center">
-        <a href="/index.html#方案">方案</a>
-        <a href="/index.html#产品">产品</a>
-        <a href="/index.html#服务">服务</a>
-        <a href="/index.html#案例">案例</a>
-        <a href="/index.html#关于">关于</a>
+        <a href="/index.html#方案" class="nav-item">方案</a>
+        <a href="/index.html#产品" class="nav-item">产品</a>
+        <a href="/index.html#服务" class="nav-item">服务</a>
+        <a href="/index.html#案例" class="nav-item">案例</a>
+        <a href="/index.html#关于" class="nav-item">关于</a>
       </div>
     </div>
   </div>
 
-  <!-- 主体内容 -->
-  <div class="first-stack">
+  <div class="first-stack need-padding" style="min-height:60vh;">
     <div class="left-Introduce">
-      <!-- 🔴 音乐按钮放在标题正上方，位置精准 -->
-      <div class="music-btn" id="musicBtn">🎵</div>
-      
       <div class="title-group">
-        <h1>智能影音娱乐方案</h1>
+        <span class="title">智能影音娱乐方案</span>
       </div>
       <div class="discription">
-        家庭影院、背景音乐、一键观影、灯光窗帘同步联动。
+        <span class="discription-text">家庭影院、背景音乐、一键观影、灯光窗帘同步联动。</span>
       </div>
-      <a href="/index.html#服务" class="about-button">返回咨询</a>
+      <div class="first-stack-links">
+        <a href="/index.html#服务" class="about-button">返回咨询</a>
+      </div>
     </div>
   </div>
 
-  <div class="product-group">
+  <div class="product-group need-padding">
     <h2 class="group-title">方案详情</h2>
-    <p class="group-description">这里可填写影音设备、背景音乐系统、场景模式、控制方式等内容</p>
+    <span class="group-description">这里可填写影音设备、背景音乐系统、场景模式、控制方式等内容</span>
+
+    <!-- 音乐播放器 -->
+    <div class="music-player">
+      <h3>🎵 背景音乐试听</h3>
+      <audio controls>
+        <source src="/music/bgm.mp3" type="audio/mpeg">
+        您的浏览器不支持音频播放
+      
+    </div>
   </div>
 
-  <!-- 音频标签：无版权在线BGM -->
-  <audio id="bgAudio" loop>
-    <source src="https://assets.mixkit.co/sfx/preview/mixkit-software-interface-start-2574.mp3" type="audio/mpeg">
-    您的浏览器不支持音频播放
-  
-
-  <!-- JS逻辑：100% 绑定生效 -->
-  <script>
-    // 页面完全加载后执行，避免DOM未加载导致失效
-    window.addEventListener('load', function() {
-      const audio = document.getElementById('bgAudio');
-      const btn = document.getElementById('musicBtn');
-
-      // 点击按钮切换播放/暂停
-      btn.addEventListener('click', function() {
-        if (audio.paused) {
-          audio.play().catch(err => console.log('播放失败：', err));
-          btn.textContent = '🎵';
-        } else {
-          audio.pause();
-          btn.textContent = '⏸';
-        }
-      });
-    });
-  </script>
-
-  <!-- 底部版权 -->
   <div class="footer">
-    <div class="footer-content">
-      <p>Copyright © 夏飞的智能家居 保留所有权利。</p>
+    <div class="footer-content need-padding">
+      <span class="info">Copyright © 夏飞的智能家居 保留所有权利。</span>
       <div class="info-group">
-        <a href="/index.html#服务">联系我们</a>
-        <a>专业全屋智能定制</a>
+        <a class="info" href="/index.html#服务">联系我们</a>
+        <a class="info">专业全屋智能定制</a>
       </div>
     </div>
   </div>
+
+<!-- 悬浮播放器 唯一新增的部分，不会影响任何原有内容 -->
+<div id="myplayer"></div>
+<script>
+const ap = new APlayer({
+  container: document.getElementById('myplayer'),
+  fixed: true,
+  autoplay: false,
+  loop: true,
+  volume: 0.5,
+  audio: [{
+    name: "背景音乐",
+    artist: "夏飞智能家居",
+    url: "https://cdn.pondly.cc/audio/relax.mp3",
+  }]
+});
+</script>
+
 </body>
 </html>
