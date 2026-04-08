@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>智能影音娱乐方案 - 夏飞智能家居</title>
   <link rel="stylesheet" href="/main.css">
-  <link rel="icon" href="/img/logo.webp">
-  <link rel="apple-touch-icon" href="/img/logo.webp">
+  <link rel="icon" type="image/x-icon" href="/img/icon.webp">
+  <link rel="apple-touch-icon" href="/img/icon.webp">
   <meta name="theme-color" content="#1C1C1F">
   <style>
     #方案,#产品,#服务,#案例,#关于 { padding-top:80px; margin-top:-80px; display:block; position:relative; }
@@ -33,9 +33,6 @@
     .float-music:hover {
       transform: scale(1.08);
     }
-    audio {
-      display: none;
-    }
   </style>
 </head>
 <body>
@@ -43,7 +40,7 @@
     <div class="nav-content">
       <div class="nav-left">
         <a href="/index.html" class="site-logo">
-          <img src="/img/logo.webp" alt="logo" class="site-logo-img">
+          <img src="/img/icon.webp" alt="logo" class="site-logo-img">
           <span class="site-name">夏飞</span>
         </a>
       </div>
@@ -76,22 +73,25 @@
     <span class="group-description">这里可填写影音设备、背景音乐系统、场景模式、控制方式等内容</span>
   </div>
 
-  <!-- 无版权纯音乐 · 第一首 · 自动循环播放 -->
+  <!-- 音乐播放器 -->
   <audio id="bgAudio" loop>
     <source src="https://assets.mixkit.co/sfx/preview/mixkit-software-interface-start-2574.mp3" type="audio/mpeg">
   
 
+  <!-- 悬浮按钮 -->
   <div class="float-music" id="musicBtn">🎵</div>
 
   <script>
     const audio = document.getElementById('bgAudio');
     const btn = document.getElementById('musicBtn');
 
-    document.addEventListener('click', () => {
-      audio.play().catch(err => {});
+    // 点击页面任意位置播放
+    document.body.addEventListener('click', function() {
+      audio.play().catch(e => {});
     }, { once: true });
 
-    btn.onclick = () => {
+    // 点击按钮控制播放暂停
+    btn.onclick = function() {
       if (audio.paused) {
         audio.play();
         btn.textContent = '🎵';
