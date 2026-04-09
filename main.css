@@ -167,7 +167,7 @@ img {
   align-items: center;
   z-index: 2;
   transition: ease-in-out 0.3s;
-  backdrop-filter: blur(10px); /* 调整模糊效果的值 */
+  backdrop-filter: blur(10px);
 }
 
 .nav-content {
@@ -348,12 +348,14 @@ img.group-item-icon-img {
   width: 100px;
   height: 100px;
   border-radius: 28px;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .group-info-button {
-  position: relative;
-  z-index: 10;
-  display: block;
+  display: flex;
+  align-items: center;
   margin-top: 8px;
 }
 
@@ -377,8 +379,8 @@ span.linkbotton-tips {
   margin-left: 36px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100px;
+  height: auto;
+  min-height: 100px;
 }
 
 .group-info-group a.title {
@@ -400,17 +402,11 @@ span.linkbotton-tips {
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1; /* 这里是超出几行省略 */
+  -webkit-line-clamp: 1;
   overflow: hidden;
 }
 
 a.linkbutton {
-  display: inline-block !important;
-  padding: 10px 24px !important;
-  height: auto !important;
-  pointer-events: all !important;
-  position: relative !important;
-  z-index: 999 !important;
   padding: 6px 20px;
   display: flex;
   background: var(--heo-blue);
@@ -424,10 +420,6 @@ a.linkbutton {
 
 a.linkbutton:hover {
   filter: brightness(1.2);
-}
-
-a.linkbutton:active {
-  filter: brightness(0.8);
 }
 
 .footer {
@@ -461,8 +453,6 @@ a.linkbutton:active {
   display: flex;
   flex-direction: column;
 }
-
-/* banner */
 
 .product-banner {
   background-image: linear-gradient(180deg, #02162A 0%, #00001e 100%);
@@ -561,7 +551,6 @@ a.second-link:hover {
   max-width: 968px;
   width: 100%;
   margin: auto;
-  transform: scale(1.2) !important;
 }
 
 .inline-word {
@@ -689,114 +678,41 @@ span.avatar-name {
   text-align: center;
 }
 
-/* 封面图 mishebei.webp 放大 200% */
-.banner-img {
-  transform: scale(2.0) !important;
-}
-.right-stack {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: visible !important;
-}
-
-/* 修复 jpg 图片不显示问题 */
-img.group-item-icon-img {
-  display: block !important;
-  width: 100px !important;
-  height: 100px !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-/* 修复按钮布局，防止被挤掉 */
-.group-info-group {
-  height: auto !important;
-  min-height: 100px;
-}
-
-.group-info-button {
-  margin-top: 12px !important;
-}
-
-
 @media screen and (max-width: 1200px) {
   .group-item {
     width: 50%;
   }
-
   .special-card {
     display: none;
   }
-
 }
 
 @media screen and (max-width: 768px) {
   .first-stack {
-    margin-bottom: 20px;
-  }
-
-  .left-Introduce {
-    margin-bottom: 40px;
-  }
-
-  a.about-button {
-    margin-top: 40px;
-  }
-  
-  .group-items {
-    margin-top: 30px;
-  }
-
-  body .need-padding {
-    width: 80%;
-  }
-
-  .first-stack {
     flex-direction: column;
     margin-top: 120px;
   }
-
-  .product-group {
-    margin:  0px;
-  }
-  
   .group-item {
     width: 100%;
   }
-
-  .footer {
-    flex-direction: column;
-    margin-top: 20px;
-  }
-
-  .footer .info {
-    margin-bottom: 12px;
-  }
-
-  .show-menu .nav {
-    background: var(--heo-fontcolor);
-  }
-
-  .show-menu .nav-content {
-    background: var(--heo-fontcolor);
-  }
-
-  .nav-right .nav-item {
+  .nav-center {
     display: none;
   }
-
   .nav-right .nav-menu {
     display: flex;
     color: var(--heo-white);
-    padding: 8px 0 8px 8px;
   }
-
   .product-banner span.title {
     font-size: 40px;
     line-height: 46px;
   }
-
+  .banner-pic {
+    height: 200px;
+    bottom: 40px;
+  }
+  .product-banner {
+    min-height: 520px;
+  }
   .menu-list {
     display: flex;
     position: fixed;
@@ -811,138 +727,26 @@ img.group-item-icon-img {
     transition: ease-in-out 0.3s;
     opacity: 0;
   }
-
   .show-menu .menu-list {
     height: 100%;
     opacity: 1;
   }
-
-  .menu-list a.nav-item {
-    padding: 8px 8px;
-    font-size: 16px;
-    border-bottom: 1px solid #ffffff53;
-    width: 90%;
-    margin-left: 0;
-  }
-
-  .show-menu .menu-list a.nav-item {
-    padding: 12px 8px;
-  }
-  
-  .banner-pic {
-    margin-top: 20px;
-    height: 200px;
-    bottom: 40px;
-  }
-
-  .product-banner {
-    padding-top: 60px;
-    min-height: 520px;
-  }
-
-  h2.group-title {
-    margin: 0;
-  }
-
-  a.linkbutton {
-    margin-left: 0px;
-  }
-
-  .banner-img {
-    height: 100%;
-  }
-
-  .banner-pic-img {
-    width: 100vw;
-  }
-
-  .nav-center {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 375px) {
-  .first-stack {
-    margin-bottom: 20px;
-  }
-
-  .left-Introduce {
-    margin-bottom: 40px;
-  }
-
-  a.about-button {
-    margin-top: 40px;
-  }
-  
-  .group-items {
-    margin-top: 30px;
-  }
-
-  .group-item {
-    flex-direction: row;
-  }
   .group-info-group {
     margin-left: 20px;
-    flex-direction: row;
-    width: 100%;
-    height: 45px;
   }
-
-  .group-info-button {
-    margin-top: 0px;
-    flex-direction: column;
-  }
-
-  span.linkbotton-tips {
-    margin-top: 4px;
-  }
-
-  .product-group {
-    margin: 0;
-  }
-
-  img.group-item-icon-img,a.group-item-icon {
+  img.group-item-icon-img,
+  a.group-item-icon {
     width: 40px;
     height: 40px;
     border-radius: 12px;
   }
-
-  .product-banner {
-    padding-top: 40px;
-  }
-
-  .banner-pic {
-    margin-top: 0px;
-    height: 150px;
-  }
-
-  h2.group-title {
-    margin: 0;
-  }
-
-  a.linkbutton {
-    margin-left: 8px;
-  }
-
-  .footer {
-    margin-top: 20px;
-  }
-
   .title-group .title {
     font-size: 35px;
-    line-height: 1.2;
   }
-
   span.discription-text {
     font-size: 16px;
-    line-height: 1.2;
-  }
-
-  a.about-button {
-    padding: 0 24px;
-  }
-
-  .nav-center {
-    display: none;
   }
 }
