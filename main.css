@@ -907,3 +907,12 @@ span.avatar-name {
     display: none;
   }
 }
+
+/* 修复 jpg 图片不显示问题 */
+img.group-item-icon-img {
+  display: block !important;
+  width: 100px !important;
+  height: 100px !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
