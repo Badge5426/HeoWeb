@@ -351,8 +351,10 @@ img.group-item-icon-img {
 }
 
 .group-info-button {
-  display: flex;
-  align-items: center;
+  position: relative;
+  z-index: 10;
+  display: block;
+  margin-top: 8px;
 }
 
 span.linkbotton-tips {
@@ -403,6 +405,12 @@ span.linkbotton-tips {
 }
 
 a.linkbutton {
+  display: inline-block !important;
+  padding: 10px 24px !important;
+  height: auto !important;
+  pointer-events: all !important;
+  position: relative !important;
+  z-index: 999 !important;
   padding: 6px 20px;
   display: flex;
   background: var(--heo-blue);
@@ -553,6 +561,7 @@ a.second-link:hover {
   max-width: 968px;
   width: 100%;
   margin: auto;
+  transform: scale(1.2) !important;
 }
 
 .inline-word {
@@ -678,6 +687,36 @@ span.avatar-name {
   font-size: 14px;
   opacity: 0.6;
   text-align: center;
+}
+
+/* 封面图 mishebei.webp 放大 200% */
+.banner-img {
+  transform: scale(2.0) !important;
+}
+.right-stack {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible !important;
+}
+
+/* 修复 jpg 图片不显示问题 */
+img.group-item-icon-img {
+  display: block !important;
+  width: 100px !important;
+  height: 100px !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* 修复按钮布局，防止被挤掉 */
+.group-info-group {
+  height: auto !important;
+  min-height: 100px;
+}
+
+.group-info-button {
+  margin-top: 12px !important;
 }
 
 
@@ -906,13 +945,4 @@ span.avatar-name {
   .nav-center {
     display: none;
   }
-}
-
-/* 修复 jpg 图片不显示问题 */
-img.group-item-icon-img {
-  display: block !important;
-  width: 100px !important;
-  height: 100px !important;
-  visibility: visible !important;
-  opacity: 1 !important;
 }
