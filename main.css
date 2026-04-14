@@ -156,6 +156,7 @@ img {
   -webkit-user-drag: none;
 }
 
+/* ✅ 修复1：导航栏强制在最顶层 */
 .nav {
   display: flex;
   width: 100%;
@@ -165,9 +166,9 @@ img {
   flex-direction: column;
   background: var(--heo-navbg);
   align-items: center;
-  z-index: 2;
+  z-index: 9999;
   transition: ease-in-out 0.3s;
-  backdrop-filter: blur(10px); /* 调整模糊效果的值 */
+  backdrop-filter: blur(10px);
 }
 
 .nav-content {
@@ -382,7 +383,6 @@ span.linkbotton-tips {
   flex-direction: column;
   justify-content: space-between;
   height: 100px;
-  /* 修复按钮不被挤压：高度自适应，保留最小高度 */
   height: auto !important;
   min-height: 100px;
 }
@@ -406,11 +406,12 @@ span.linkbotton-tips {
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1; /* 这里是超出几行省略 */
+  -webkit-line-clamp: 1;
   overflow: hidden;
   margin-bottom: 8px;
 }
 
+/* ✅ 修复2：按钮层级降低 */
 a.linkbutton {
   padding: 6px 20px;
   display: flex;
@@ -421,12 +422,11 @@ a.linkbutton {
   transition: ease-in-out 0.3s;
   width: fit-content;
   white-space: nowrap;
-  /* 强制按钮显示，不被覆盖 */
   display: inline-block !important;
   visibility: visible !important;
   opacity: 1 !important;
   position: relative !important;
-  z-index: 999 !important;
+  z-index: 1;
 }
 
 a.linkbutton:hover {
@@ -923,11 +923,11 @@ span.avatar-name {
   }
 }
 
-/* ✅ 核心修复：隐藏锚点占位符，向下偏移120px，完美避开导航栏 */
+/* ✅ 修复3：锚点跳转位置，刚好在导航栏下方 */
 .anchor-point {
   display: block;
-  height: 120px; /* 偏移量：导航栏60px + 额外60px留白 */
-  margin-top: -120px; /* 向上拉回，不影响布局 */
-  visibility: hidden; /* 隐藏看不见 */
-  pointer-events: none; /* 不影响点击 */
+  height: 80px;
+  margin-top: -80px;
+  visibility: hidden;
+  pointer-events: none;
 }
