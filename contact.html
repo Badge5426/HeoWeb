@@ -10,6 +10,33 @@
   <meta name="theme-color" content="#1C1C1F">
   <style>
     #方案,#产品,#服务,#案例,#关于 { padding-top:80px; margin-top:-80px; display:block; position:relative; }
+
+    /* 👇 核心调整：让联系方式首屏可见、超大醒目 👇 */
+    .first-stack {
+      min-height: auto !important; /* 取消固定高度，让内容紧凑 */
+      margin-top: 120px !important; /* 避开导航栏 */
+      margin-bottom: 60px !important;
+    }
+    .title-group .title {
+      font-size: 48px !important; /* 标题缩小，给联系方式腾空间 */
+      line-height: 1.2 !important;
+    }
+    .discription-text {
+      font-size: 20px !important;
+      margin-top: 16px !important;
+    }
+    .contact-info {
+      font-size: 28px !important; /* 联系方式超大字号 */
+      line-height: 2.5 !important; /* 加大行高，更醒目 */
+      font-weight: 600 !important;
+      margin-top: 40px !important; /* 首屏直接显示 */
+    }
+    .contact-info p {
+      margin: 0 !important;
+    }
+    .product-group {
+      display: none !important; /* 隐藏原来的联系方式模块，避免重复 */
+    }
   </style>
 </head>
 <body>
@@ -31,7 +58,7 @@
     </div>
   </div>
 
-  <div class="first-stack need-padding" style="min-height:60vh;">
+  <div class="first-stack need-padding">
     <div class="left-Introduce">
       <div class="title-group">
         <span class="title">联系我</span>
@@ -39,12 +66,22 @@
       <div class="discription">
         <span class="discription-text">专业全屋智能定制，欢迎咨询方案、报价与上门设计。</span>
       </div>
-      <div class="first-stack-links">
+      
+      <!-- 👇 联系方式直接放到首屏，一打开就看到 👇 -->
+      <div class="contact-info">
+        <p>📞 电话：151 5928 8866</p>
+        <p>💬 微信：xiafei-smart</p>
+        <p>📍 服务地区：厦门及周边地区</p>
+        <p>🕒 服务时间：9:00 – 17:00</p>
+      </div>
+
+      <div class="first-stack-links" style="margin-top: 40px;">
         <a href="/index.html" class="about-button">返回首页</a>
       </div>
     </div>
   </div>
 
+  <!-- 👇 保留原模块，但用CSS隐藏，避免重复 👇 -->
   <div class="product-group need-padding">
     <h2 class="group-title">联系方式</h2>
     <span class="group-description">可直接添加微信或电话咨询，响应及时</span>
